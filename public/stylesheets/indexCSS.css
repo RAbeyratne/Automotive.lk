@@ -9,3 +9,11 @@ a {
   color: #00B7FF;
 }
 
+
+#title {
+  color: darkblue;
+  border: 3px groove;
+  background-color: #fff379;
+  padding: 1%;
+}
+

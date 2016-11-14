@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="javascript/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <link rel="stylesheet" href="stylesheets/signInCSS.css">
+    <link rel="stylesheet" href="stylesheets/commonPageCSS.css">
+    <script>
+        $(function(){
+            $("#includedMenu").load("menuBar.html");
+        });
+        $(function(){
+            $("#footer").load("footer.html");
+        });
+    </script>
+
+</head>
+<body ng-app="signIn">
+<h1 id="title">Sign In to Automotive.lk</h1> <br>
+
+<!--Top Menu-->
+<div id="includedMenu"></div>  <br>
+
+<div>
+    <div class="container"  style="background-color: #112233; margin: 0%; width: auto; padding: 0%" ng-controller="AppCtrl">
+        <table class="table table-responsive">
+            <tbody>
+            <tr>
+                <td>
+                    <!--Sign in form-->
+                    <div class="container" id="login">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-wrap" >
+                                    <h1>SIGN IN</h1>
+                                    <form role="form" id="login-form" autocomplete="off">
+                                        <div class="form-group">
+                                            <label for="email" class="sr-only">Email</label>
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@automotive.lk">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="key" class="sr-only">Password</label>
+                                            <input type="password" name="key" id="key" class="form-control" placeholder="Password">
+                                        </div>
+                                        <div class="checkbox">
+                                            <span class="character-checkbox" onclick="showPassword()"></span>
+                                            <span class="label">Show password</span>
+                                        </div>
+                                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Proceed">
+                                    </form>
+                                    <a href="/test">Sign up for free</a>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End sign in -->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+
+<!--Footer-->
+<br><div id="footer"></div>
+</body>
+</html>

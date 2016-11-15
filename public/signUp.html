@@ -6,7 +6,7 @@
     <script src="javascript/jquery-3.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <link rel="stylesheet" href="stylesheets/signInCSS.css">
+    <link rel="stylesheet" href="stylesheets/signUpCSS.css">
     <link rel="stylesheet" href="stylesheets/commonPageCSS.css">
     <script>
         $(function(){
@@ -16,48 +16,57 @@
             $("#footer").load("footer.html");
         });
     </script>
-
+    <script src="javascript/signUpPageController.js"></script>
 </head>
-<body ng-app="signIn">
+<body ng-app="signInPage">
 <h1 id="title">Sign Up to Automotive.lk</h1> <br>
-
+    
 <!--Top Menu-->
 <div id="includedMenu"></div>  <br>
-
+    
 <div>
     <div class="container"  style="background-color: #112233; margin: 0%; width: auto; padding: 0%" ng-controller="AppCtrl">
         <table class="table table-responsive">
             <tbody>
             <tr>
                 <td>
-                    <!--Sign in form-->
+                    <!--Sign up form-->
                     <div class="container" id="register">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-wrap" >
+                                    <hr>
                                     <h1>SIGN UP</h1>
-                                    <form role="form" id="login-form" autocomplete="off">
+                                    <form role="form" id="regsiter-form" autocomplete="off" ng-submit="proceed()">
+                                        <div class="form-group">
+                                            <label for="userName" class="sr-only">Full Name</label>
+                                            <input type="userName" name="userName" id="userName" class="form-control" placeholder="Full Name" ng-model="userName" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="date" class="sr-only">Date</label>
+                                            <input type="date" name="date" id="date" class="form-control" placeholder="date" ng-model="date" required>
+                                        </div>
                                         <div class="form-group">
                                             <label for="email" class="sr-only">Email</label>
-                                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@automotive.lk">
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@mail.lk" ng-model="email" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="key" class="sr-only">Password</label>
-                                            <input type="password" name="key" id="key" class="form-control" placeholder="Password">
+                                            <input type="password" name="key" id="key" class="form-control" placeholder="Password" ng-model="passwordField1" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="key" class="sr-only">Re-enter password</label>
-                                            <input type="password" name="key" id="key" class="form-control" placeholder="Re-enter password">
+                                            <input type="password" name="key" id="key" class="form-control" placeholder="Re-enter Password" ng-model="passwordField2" required>
                                         </div>
+                                        <p style="color: red">{{errorMessage}}<p>
                                         <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block" value="Proceed">
                                     </form>
-                                    <a href="/test">Sign up for free</a>
                                     <hr>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- End sign in -->
+                    <!-- End sign up -->
                 </td>
             </tr>
             </tbody>

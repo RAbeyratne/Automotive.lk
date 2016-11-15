@@ -16,42 +16,39 @@
             $("#footer").load("footer.html");
         });
     </script>
-
+    <script src="javascript/signInPageController.js"></script>
 </head>
-<body ng-app="signIn">
+<body ng-app="signInPage">
 <h1 id="title">Sign In to Automotive.lk</h1> <br>
 
 <!--Top Menu-->
 <div id="includedMenu"></div>  <br>
 
 <div>
-    <div class="container"  style="background-color: #112233; margin: 0%; width: auto; padding: 0%" ng-controller="AppCtrl">
+    <div class="container"  style="background-color: #112233; margin: 0%; width: auto; padding: 0%">
         <table class="table table-responsive">
             <tbody>
             <tr>
                 <td>
                     <!--Sign in form-->
-                    <div class="container" id="login">
+                    <div class="container" id="login"  ng-controller="AppCtrl">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-wrap" >
+                                    <hr>
                                     <h1>SIGN IN</h1>
-                                    <form role="form" id="login-form" autocomplete="off">
+                                    <form role="form" id="login-form" autocomplete="off"  ng-submit="proceed()">
                                         <div class="form-group">
                                             <label for="email" class="sr-only">Email</label>
-                                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@automotive.lk">
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@mail.lk"  ng-model="email" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="key" class="sr-only">Password</label>
-                                            <input type="password" name="key" id="key" class="form-control" placeholder="Password">
-                                        </div>
-                                        <div class="checkbox">
-                                            <span class="character-checkbox" onclick="showPassword()"></span>
-                                            <span class="label">Show password</span>
+                                            <input type="password" name="key" id="key" class="form-control" placeholder="Password" ng-model="password" required>
                                         </div>
                                         <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Proceed">
                                     </form>
-                                    <a href="/test">Sign up for free</a>
+                                    <a href="/signUp.html">Sign up for free</a>
                                     <hr>
                                 </div>
                             </div>

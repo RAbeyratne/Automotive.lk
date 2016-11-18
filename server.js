@@ -15,5 +15,33 @@ var users = require('./routes/users');
 app.use('/product', product);   
 app.use('/users', users); 
 
+
+// Test Mongose connection..
+var mongoose = require('mongoose');
+var assert = require('assert');
+var userModel = require('./schema.js');
+var url = 'mongodb://localhost:27017/TestDb';
+mongoose.connect(url);
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'Connection error'));
+db.on('open', function(){
+    console.log('Connected');
+});
+
+var newUser = {
+    fName : 'testFName',
+    dateOfBirth : 'testDOB',
+    email : 'testEmail',
+    password : 'testPass'
+}
+
+newUser.save(function(err){
+    if(err) throw err;
+    
+    
+});
+// End Test
+
 app.listen(3000);
 console.log("Automotive.lk running on port 3000");

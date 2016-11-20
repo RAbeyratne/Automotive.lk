@@ -17,7 +17,7 @@ var userSchema = new Schema({
     email : {
         type: String,
         require: true,
-        unique: true        
+        unique: false        
     },
     password : {
         type: String,
@@ -26,6 +26,4 @@ var userSchema = new Schema({
     }
 }); 
 
-
-var userModel = mongoose.model('userModel', userSchema);
-module.export = userModel;
+module.exports = mongoose.model('userModel', userSchema, 'userModel');

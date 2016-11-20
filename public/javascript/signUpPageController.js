@@ -14,7 +14,10 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
         console.log($scope.passwordField2);
         if ($scope.passwordField1 == $scope.passwordField2){
             $scope.errorMessage = '';    
-            var userDetails = [$scope.userName, $scope.date, $scope.email, $scope.passwordField1, $scope.passwordField2];
+            var userDetails = {'fName' : $scope.userName,
+                               'date'  : $scope.date, 
+                               'email' : $scope.email, 
+                               'password': $scope.passwordField1};
             $http.post('/users/userRegistration', userDetails).success(function(response) {
                 console.log(response);
             });

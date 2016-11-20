@@ -18,9 +18,9 @@ app.use('/users', users);
 
 // Test Mongose connection..
 var mongoose = require('mongoose');
-var assert = require('assert');
-var userModel = require('./schema.js');
-var url = 'mongodb://localhost:27017/TestDb';
+//var assert = require('assert');
+
+var url = 'mongodb://localhost:27017/TestDbTwo';
 mongoose.connect(url);
 var db = mongoose.connection;
 
@@ -29,18 +29,30 @@ db.on('open', function(){
     console.log('Connected');
 });
 
-var newUser = {
-    fName : 'testFName',
-    dateOfBirth : 'testDOB',
-    email : 'testEmail',
-    password : 'testPass'
-}
+// End mongo connection
 
-newUser.save(function(err){
-    if(err) throw err;
-    
-    
-});
+// Test 02
+//var userModel = require('./schema');
+//var newUser = userModel({
+//    fName : 'testFName',
+//    dateOfBirth : 'testDOB',
+//    email : 'testEmail',
+//    password : 'testPass'
+//});
+//
+//newUser.save(function(err){
+//    if(err){
+//        throw err;
+//    }
+//    
+//    userModel.find({}, function(err, data){
+//        if (err){
+//            throw err
+//        } else {
+//            console.log(data);
+//        }
+//    });    
+//});
 // End Test
 
 app.listen(3000);

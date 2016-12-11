@@ -37,18 +37,19 @@ router.post('/userRegistration', function (req, res) {
                 if(err){
                     res.send(err);
                     throw err;
-                }
-
-                userModel.find({}, function(err, data){
-                    if (err){
-                        res.send(err);
-                        throw err;
-                    } else {
-                        console.log(data);
-                        res.send('User saved');
-                        result = 'SAVED RECORD';
-                    }
-                });    
+                } else {
+                    userModel.find({}, function(err, data){
+                        if (err){
+                            console.log(err);
+                            res.send(err);                           
+                            throw err;
+                        } else {
+                            console.log(data);
+                            res.send('User saved');
+                            result = 'SAVED RECORD';
+                        }
+                    });    
+                }               
             });   
         }
         console.log('RESULT >> ' + result);        

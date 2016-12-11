@@ -20,7 +20,7 @@ app.use('/users', users);
 var mongoose = require('mongoose');
 //var assert = require('assert');
 
-var url = 'mongodb://localhost:27017/TestDbTwo';
+var url = 'mongodb://localhost:27017/AutomotiveLk';
 mongoose.connect(url);
 var db = mongoose.connection;
 
@@ -29,31 +29,7 @@ db.on('open', function(){
     console.log('Connected');
 });
 
-// End mongo connection
 
-// Test 02
-//var userModel = require('./schema');
-//var newUser = userModel({
-//    fName : 'testFName',
-//    dateOfBirth : 'testDOB',
-//    email : 'testEmail',
-//    password : 'testPass'
-//});
-//
-//newUser.save(function(err){
-//    if(err){
-//        throw err;
-//    }
-//    
-//    userModel.find({}, function(err, data){
-//        if (err){
-//            throw err
-//        } else {
-//            console.log(data);
-//        }
-//    });    
-//});
-// End Test
 
 app.listen(3000);
 console.log("Automotive.lk running on port 3000");

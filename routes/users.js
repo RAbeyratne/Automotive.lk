@@ -1,12 +1,26 @@
 var express = require('express');
 var router = express.Router();
-var userModel = require('../schema');
+var userModel = require('../userSchema');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+
+router.use(session({secret:'ydfuisyfviusydgvi1ugnlk', resave:false, saveUninitialized:true}));
 
 // Sign in process
 router.post('/userAuthentication', function (req, res) {
-    console.log(req.body);
-    res.send('User authentication data recieved');    
+    console.log(req.body.email);
+    console.log('New User details >>> ' + JSON.stringify(req.body));
+
+// Test demo code    
+    if(req.body.email == 't@mail.com'){
+        
+        res.status(200).send('Authentication successful.');         
+    } else {
+        res.status(400).send('Authentication details invalid.'); 
+    }
+    
+// End test demo code
+    
 });
 
 // Sign up process
@@ -20,8 +34,7 @@ router.post('/userRegistration', function (req, res) {
         var result;
         if (data.length > 0){
             // Email address of new user already exists
-            result = 'ERROR : USER EXISTS'; 
-            res.send('User email already exists');
+            res.status(409).send('User email already exists.');
         } else {
             // Saving a new user            
             console.log('New User details >>> ' + JSON.stringify(req.body));
@@ -38,21 +51,19 @@ router.post('/userRegistration', function (req, res) {
                     res.send(err);
                     throw err;
                 } else {
-                    userModel.find({}, function(err, data){
-                        if (err){
-                            console.log(err);
-                            res.send(err);                           
+                    userModel.find({}, function(error, data){
+                        if (error){
+                            console.log(error);
+                            res.status(500).send(error);                           
                             throw err;
                         } else {
                             console.log(data);
-                            res.send('User saved');
-                            result = 'SAVED RECORD';
+                            res.status(200).send('User saved succesfully.');                   
                         }
                     });    
                 }               
             });   
-        }
-        console.log('RESULT >> ' + result);        
+        }    
     });
 });
 

@@ -58,7 +58,7 @@
                                             <label for="key" class="sr-only">Re-enter password</label>
                                             <input type="password" name="key" id="key" class="form-control" placeholder="Re-enter Password" ng-model="passwordField2" required>
                                         </div>
-                                        <p style="color: red">{{errorMessage}}<p>
+                                        <p style="color:red;" ng-bind="notificationText"></p>
                                         <input type="submit" id="btn-register" class="btn btn-custom btn-lg btn-block" value="Proceed">
                                     </form>
                                     <hr>

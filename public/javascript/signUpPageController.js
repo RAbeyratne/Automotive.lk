@@ -18,12 +18,34 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
                                'date'  : $scope.date, 
                                'email' : $scope.email, 
                                'password': $scope.passwordField1};
-            $http.post('/users/userRegistration', userDetails).success(function(response) {
-                console.log(response);
+            $http.post('/users/userRegistration', userDetails).success(function(response, statusCode) {
+                if (statusCode == 200){        
+                    $scope.notificationText = 'Registration successful. You will be automatically redirected to the sign-in page.';  
+
+                    function redirectToPage() {
+                        setTimeout(function(){
+                            window.location = "/signIn.html"; 
+                        }, 3000);
+                    }
+                    redirectToPage();
+                    console.log(statusCode + ' : ' + response);
+                }
+            }).error(function(response, statusCode) {
+                if (statusCode == 500){
+                    $scope.notificationText = response;
+                }
+                if (statusCode == 409){
+                    $scope.notificationText = 'The user email already exists. Please use another email id.';
+                }
+                console.log(statusCode + ' : ' + response);
+                $scope.passwordField1 = '';
+                $scope.passwordField2 = '';
             });
         } else {
-            console.log('Issue');
-            $scope.errorMessage = '*Password mismatch!!!';
+            console.log('Password mismatch');
+            $scope.notificationText = 'Password mismatch.';
+            $scope.passwordField1 = '';
+            $scope.passwordField2 = '';
         }
     }
 }]);

@@ -3,31 +3,48 @@ var router = express.Router();
 var userModel = require('../userSchema');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var globals = require('../globals'); 
 
 router.use(session({secret:'ydfuisyfviusydgvi1ugnlk', resave:false, saveUninitialized:true}));
 
-// Sign in process
-router.post('/userAuthentication', function (req, res) {
-    console.log(req.body.email);
-    console.log('New User details >>> ' + JSON.stringify(req.body));
 
-// Test demo code    
-    if(req.body.email == 't@mail.com'){
-        
-        res.status(200).send('Authentication successful.');         
+// Sign in process
+router.post('/userAuthentication', function (req, res) {    
+    if (!globals.sessionData){ 
+        // Session data is not found in the server side
+        console.log('New User details >>> ' + JSON.stringify(req.body));
+        userModel.find({ email: req.body.email, password : req.body.password }, function(error, data) {
+            if (error){
+                res.status(500).send(error);    
+                throw error;
+            }                
+
+            if (data.length > 0){
+                // Username and password match + adding the user to the session
+                req.session.user = data;
+                globals.sessionData = data;
+
+                res.status(200).send('Authentication successful.');     
+            } else {
+                // Username and password mismatch
+                res.status(400).send('Authentication details invalid.'); 
+            }
+        });        
+
     } else {
-        res.status(400).send('Authentication details invalid.'); 
-    }
-    
-// End test demo code
-    
+        // Session data is available in the server side
+        console.log('Session data already exists');
+        res.status(409).send('User already logged in.'); 
+    }    
 });
+
 
 // Sign up process
 router.post('/userRegistration', function (req, res) {    
-    userModel.find({ email: req.body.email }, function(err, data) {
-        if (err){
-            throw err;
+    userModel.find({ email: req.body.email }, function(error, data) {
+        if (error){
+            res.status(500).send(error);    
+            throw error;      
         }
         
         console.log(data.length);
@@ -46,16 +63,16 @@ router.post('/userRegistration', function (req, res) {
                 password : req.body.password
             });
 
-            newUser.save(function(err){
-                if(err){
-                    res.send(err);
-                    throw err;
+            newUser.save(function(error){
+                if(error){
+                    res.status(500).send(error);    
+                    throw error;
                 } else {
                     userModel.find({}, function(error, data){
                         if (error){
                             console.log(error);
                             res.status(500).send(error);                           
-                            throw err;
+                            throw error;
                         } else {
                             console.log(data);
                             res.status(200).send('User saved succesfully.');                   

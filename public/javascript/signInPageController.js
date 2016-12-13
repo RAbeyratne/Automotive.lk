@@ -29,10 +29,16 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
                 $scope.password = '';
                 $scope.notificationText = 'Invalid user name and password.';
             }
+            if (statusCode == 409){
+                $scope.notificationText = response + ' You will be automatically redirected to the home page.';  
+                function redirectToPage() {
+                    setTimeout(function(){
+                        window.location = "/"; 
+                    }, 3000);
+                }
+                redirectToPage();   
+            }
             console.log(statusCode + ' : ' + response);
         });
      }
 }]);
-
-
-// t@mail.com

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var productModel = require('../productSchema');
+var globals = require('../globals'); 
 
 router.use(function timeLog (req, res, next) {  
   next();

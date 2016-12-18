@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="javascript/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+    <script src="javascript/productPageController.js"></script>
+    <link rel="stylesheet" href="stylesheets/commonPageCSS.css">
+    <script>
+        $(function(){
+            $("#includedMenu").load("menuBar.html");
+        });
+        $(function(){
+            $("#footer").load("footer.html");
+        });
+    </script>
+</head>
+    <body ng-app="productPage">
+        <p style="margin : 0; padding : 0; text-align: right;font-weight: bold;"><a href="/signIn.html">Sign In</a> | <a href="/signOut.html">Sign Out</a> |<a href="/signUp.html">Sign Up</a></p>
+        <h1 id="title">Shopping Cart</h1> <br>
+
+        <!--Top Menu-->
+        <div id="includedMenu"></div>  <br>
+
+        <div>
+            <div class="container"  style="background-color: #112233; margin: 0%; width: auto; padding: 0%" ng-controller="AppCtrl">
+                <table class="table table-responsive">
+
+                    <tbody>
+<!--
+                         <th>
+                                <th style="width:70%">Size</th>
+                                <th style="width:30%">Bust</th>
+
+                            </th>
+-->
+                    <tr>
+                        <td  style="background-color: #00B7FF">
+                            <table class="table table-responsive" style="overflow:auto; max-height: 200px" >
+<!--
+                                <div id="products" class="row list-group" >
+                                        
+                                </div>
+-->
+                              <tr>                                
+                                <td rowspan="6" style="width:50%">
+                                    <div class="thumbnail">                                
+                                        <img class="group list-group-image" src="images/itemDemoImage.jpg" alt="demoVehiclePartImage" />
+                                    </div>
+                                  </td>
+                                <td>
+                                    <div class="thumbnail"> <p class="group inner list-group-item-text"><b>Demo Title</b></p></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                    <div class="thumbnail"> <p class="group inner list-group-item-text">Demo Category</p></div>
+                                  </td>
+                              </tr> 
+                              <tr>
+                                <td>
+                                    <div class="thumbnail"> <p class="group inner list-group-item-text">Demo Description. Demo Description. Demo Description. Demo Description. Demo Description. Demo Description. Demo Description. Demo Description. Demo Description. Demo Description. Demo Description. </p></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                    <div class="thumbnail"> <p class="group inner list-group-item-text">Unit price ~ $ 99.99</p></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                    <div class="thumbnail"> <p class="group inner list-group-item-text">Demo Qty.</p> 
+                                    <input type="userName" name="userName" id="userName" class="form-control" placeholder="Full Name" ng-model="userName" required>
+                                    </div>
+                                  </td>
+                              </tr> 
+                              <tr>
+                                <td>
+                                    <div class="thumbnail"><a class="btn btn-success" href="" style="width: 100%">Add to cart</a></div>
+                                  </td>
+                              </tr> 
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </body>
+
+        <!--Footer-->
+        <br><div id="footer"></div>
+    </body>
+</html>

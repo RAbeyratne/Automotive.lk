@@ -97,13 +97,15 @@
                                                 <h4 class="group inner list-group-item-heading">
                                                     <em>{{product.productName}} </em> ~ {{product.category}}</h4>
                                                 <p class="group inner list-group-item-text">
+                                                    <i>ID :- {{product.pid}}</i></p>
+                                                <p class="group inner list-group-item-text">
                                                     <i>{{product.description}}</i></p>
                                                 <div class="row">
                                                     <div class="col-xs-12 col-md-6">
                                                         <p class="lead">${{product.price}}</p>
                                                     </div>
                                                     <div class="col-xs-12 col-md-6">
-                                                        <a class="btn btn-success" href="/item.html" style="width: 100%">Add</a>
+                                                        <a class="btn btn-success" ng-click="displayItemDetails(product.pid)" style="width: 100%">Add</a>
                                                     </div>
                                                 </div>
                                             </div>

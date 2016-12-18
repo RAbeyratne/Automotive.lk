@@ -15,4 +15,10 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
         console.log(statusCode + ' : ' + response);       
     });
 
+    
+    $scope.displayItemDetails = function (productId) { 
+        window.location = '/item.html?pid=' + productId; 
+    };
+        
+    
 }]);

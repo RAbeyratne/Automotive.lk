@@ -7,7 +7,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 
-    <script src="javascript/productPageController.js"></script>
+    <script src="javascript/itemPageController.js"></script>
     <link rel="stylesheet" href="stylesheets/commonPageCSS.css">
     <script>
         $(function(){
@@ -18,7 +18,7 @@
         });
     </script>
 </head>
-    <body ng-app="productPage">
+    <body ng-app="itemPage">
         <p style="margin : 0; padding : 0; text-align: right;font-weight: bold;"><a href="/signIn.html">Sign In</a> | <a href="/signOut.html">Sign Out</a> |<a href="/signUp.html">Sign Up</a></p>
         <h1 id="title">Shopping Cart</h1> <br>
 
@@ -30,21 +30,9 @@
                 <table class="table table-responsive">
 
                     <tbody>
-<!--
-                         <th>
-                                <th style="width:70%">Size</th>
-                                <th style="width:30%">Bust</th>
-
-                            </th>
--->
                     <tr>
                         <td  style="background-color: #00B7FF">
                             <table class="table table-responsive" style="overflow:auto; max-height: 200px" >
-<!--
-                                <div id="products" class="row list-group" >
-                                        
-                                </div>
--->
                               <tr>                                
                                 <td rowspan="6" style="width:50%">
                                     <div class="thumbnail">                                
@@ -52,22 +40,22 @@
                                     </div>
                                   </td>
                                 <td>
-                                    <div class="thumbnail"> <p class="group inner list-group-item-text"><b>Demo Title</b></p></div>
+                                    <div class="thumbnail"> <p class="group inner list-group-item-text"><b>{{selectedItemDetails.pid}}</b></p></div>
                                   </td>
                               </tr>
                               <tr>
                                 <td>
-                                    <div class="thumbnail"> <p class="group inner list-group-item-text">Demo Category</p></div>
+                                    <div class="thumbnail"> <p class="group inner list-group-item-text">{{selectedItemDetails.productName}} ~ {{selectedItemDetails.category}}</p></div>
                                   </td>
                               </tr> 
                               <tr>
                                 <td>
-                                    <div class="thumbnail"> <p class="group inner list-group-item-text">Demo Description. Demo Description. Demo Description. Demo Description. Demo Description. Demo Description. Demo Description. Demo Description. Demo Description. Demo Description. Demo Description. </p></div>
+                                    <div class="thumbnail"> <p class="group inner list-group-item-text">{{selectedItemDetails.description}}</p></div>
                                   </td>
                               </tr>
                               <tr>
                                 <td>
-                                    <div class="thumbnail"> <p class="group inner list-group-item-text">Unit price ~ $ 99.99</p></div>
+                                    <div class="thumbnail"> <p class="group inner list-group-item-text">Unit price ~ ${{selectedItemDetails.price}}</p></div>
                                   </td>
                               </tr>
                               <tr>

@@ -60,13 +60,13 @@
                               </tr>
                               <tr>
                                 <td>
-                                    <div class="thumbnail"> <p class="group inner list-group-item-text"><input type="quantity" name="quantity" id="quantity" class="form-control" placeholder="Quantity" ng-model="quantity" required></p>
+                                    <div class="thumbnail"> <p class="group inner list-group-item-text"><input type="number" name="quantity" id="quantity" class="form-control" placeholder="Quantity" ng-model="quantity" required></p>
                                     </div>
                                   </td>
                               </tr> 
                               <tr>
                                 <td>
-                                    <div class="thumbnail"><a class="btn btn-success" href="" style="width: 100%">Add to cart</a></div>
+                                    <div class="thumbnail"><a class="btn btn-success" ng-click="sendItemDetailsToServer(quantity)" href="" style="width: 100%">Add to cart</a></div>
                                   </td>
                               </tr> 
                             </table>

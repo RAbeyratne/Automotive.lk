@@ -1,7 +1,8 @@
 // Automotive.lk Application
 
 var Globals = {
-    'sessionData' : ''
+    'sessionData' : '',
+    'shoppingCart' : {}
 }
 
 module.exports = Globals;

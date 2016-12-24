@@ -20,17 +20,29 @@ router.post('/additem', function (req, res) {
     for(var itemInCart in globals.shoppingCart){
         if (itemInCart == req.body.item.pid){
             isInsideCart = true;
-            globals.shoppingCart[itemInCart].qty += dataItem.qty;
-            console.error(globals.shoppingCart);
-            res.status(200).send('Already in array');
+            globals.shoppingCart[itemInCart].qty = globals.shoppingCart[itemInCart].qty + dataItem.qty;
+            console.log('remaining number qty ' + globals.shoppingCart[itemInCart].qty);
+            console.log('new number qty ' + dataItem.qty);
+            
+            var total = globals.shoppingCart[itemInCart].qty + dataItem.qty;
+            console.log('total number qty ' + total);
+            
+//            res.status(200).send(globals.shoppingCart[itemInCart].qty);
         }      
     }
     globals.shoppingCart[req.body.item.pid] = req.body.item;
     
     if (!isInsideCart){
-        res.status(200).send('Not in array');
+        globals.shoppingCart[ dataItem['pid']] = dataItem;
+        res.status(200).send(globals.shoppingCart);
     }
 });
+
+// Get cart details
+router.get('/status', function (req, res) {
+    res.status(200).send(JSON.stringify(globals.shoppingCart));
+});
+
 
 
 console.log('Cart Router Active');

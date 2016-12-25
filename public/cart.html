@@ -7,7 +7,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 
-    <script src="javascript/productPageController.js"></script>
+    <script src="javascript/cartPageController.js"></script>
     <link rel="stylesheet" href="stylesheets/commonPageCSS.css">
     <script>
         $(function(){
@@ -18,7 +18,7 @@
         });
     </script>
 </head>
-    <body ng-app="productPage">
+    <body ng-app="cartPage">
         <p style="margin : 0; padding : 0; text-align: right;font-weight: bold;"><a href="/signIn.html">Sign In</a> | <a href="/signOut.html">Sign Out</a> |<a href="/signUp.html">Sign Up</a></p>
         <h1 id="title">Shopping Cart</h1> <br>
 
@@ -27,24 +27,53 @@
 
         <div>
             <div class="container"  style="background-color: #112233; margin: 0%; width: auto; padding: 0%" ng-controller="AppCtrl">
-                <table class="table table-responsive">
+                <table class="table table-responsive" style="background-color: #00B7FF;">
                     <tbody>
                     <tr>
-                        <td style="background-color: #00B7FF;">
-                           test
-                           <br>test
-                           <br>test
-                           <br>test
-                           <br>test
-                           <br>test
-                           <br>test
-                           <br>test
-                           <br>test
-                           <br>test
-                           <br>test
-                           <br>
-                        </td>
+                        <th>
+                            <td>
+                                Product ID
+                            </td>
+                            <td>
+                                Item Description
+                            </td>
+                            <td>
+                                Unit Price
+                            </td>
+                            <td>
+                                Quantity
+                            </td> 
+                            <td>
+                                Total Price
+                            </td>
+                            <td>
+                                Operation
+                            </td>
+                        </th>
                     </tr>
+                    <tr ng-repeat="itemInList in cartItems" style="background-color: #AFEEEE;">
+                        <th>
+                            <td>
+                                {{itemInList.pid}}
+                            </td>
+                            <td>
+                                {{itemInList.productName}} - {{itemInList.category}}
+                            </td>
+                            <td>
+                                {{itemInList.price}}
+                            </td>
+                            <td>
+                                {{itemInList.qty}}
+                            </td> 
+                            <td>
+                                {{itemInList.totalAmount}}
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" ng-click="deletePart(itemInList)">Remove</button>
+                            </td>
+                        </th>
+                    </tr>
+                
                     </tbody>
                 </table>
             </div>

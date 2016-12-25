@@ -24,7 +24,9 @@ router.post('/additem', function (req, res) {
             var remainingQty = globals.shoppingCart[itemInCart].qty;    
             var remainingTotal = globals.shoppingCart[itemInCart].totalAmount;   
             globals.shoppingCart[itemInCart].qty = remainingQty + dataItem.qty;  
-            globals.shoppingCart[itemInCart].totalAmount = remainingTotal + dataItem.totalAmount;
+//            globals.shoppingCart[itemInCart].totalAmount = Number((remainingTotal + dataItem.totalAmount).toFixed(1));
+//             globals.shoppingCart[itemInCart].totalAmount = Math.round((remainingTotal + dataItem.totalAmount) * 100) / 100;
+            globals.shoppingCart[itemInCart].totalAmount = Math.round((remainingTotal + dataItem.totalAmount) * 100) / 100;
             res.status(200).send('Updated the content of the cart');            
             break;
         }      
@@ -32,13 +34,14 @@ router.post('/additem', function (req, res) {
 
     if (!isInsideCart){
         // Making a new item entry, if it's not already in the cart
-        globals.shoppingCart[ dataItem['pid']] = dataItem;        
+        globals.shoppingCart[dataItem['pid']] = dataItem;  
+        globals.shoppingCart[dataItem['pid']].totalAmount = Math.round((globals.shoppingCart[dataItem['pid']].totalAmount) * 100) / 100;
         res.status(200).send('Added the new item to the cart');
     }
 });
 
 // Get cart details
-router.get('/status', function (req, res) {
+router.get('/', function (req, res) {
     res.status(200).send(globals.shoppingCart);
 });
 

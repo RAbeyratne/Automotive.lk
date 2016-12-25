@@ -1,5 +1,5 @@
 /**
- * Created by Ramitha on 11/15/2016.
+ * Automotive.lk
  */
 var myApp = angular.module('signInPage', []);
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {

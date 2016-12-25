@@ -1,5 +1,5 @@
 /**
- * Created by Ramitha on 12/18/2016.
+ * Automotive.lk
  */
 var myApp = angular.module('itemPage', []);
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {

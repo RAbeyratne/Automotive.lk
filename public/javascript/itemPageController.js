@@ -31,13 +31,16 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
          console.log(itemData);
 
          $http.post('cart/additem', itemData).success(function(response, statusCode) {
-            if (statusCode == 200){        
-                // ToDo
+            if (statusCode == 200){ 
+                alert('Successfuly added item to the cart');
+                window.location = "/products.html"; 
+            } else {
+                alert('Item addition failed');
             }
             console.log(statusCode + ' : ' + response);
         }).error(function(response, statusCode) {            
             if (statusCode == 400){
-                
+                alert('Item addition failed');
             };
             console.log(statusCode + ' : ' + response);
         });

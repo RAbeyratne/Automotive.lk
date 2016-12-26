@@ -24,8 +24,6 @@ router.post('/additem', function (req, res) {
             var remainingQty = globals.shoppingCart[itemInCart].qty;    
             var remainingTotal = globals.shoppingCart[itemInCart].totalAmount;   
             globals.shoppingCart[itemInCart].qty = remainingQty + dataItem.qty;  
-//            globals.shoppingCart[itemInCart].totalAmount = Number((remainingTotal + dataItem.totalAmount).toFixed(1));
-//             globals.shoppingCart[itemInCart].totalAmount = Math.round((remainingTotal + dataItem.totalAmount) * 100) / 100;
             globals.shoppingCart[itemInCart].totalAmount = Math.round((remainingTotal + dataItem.totalAmount) * 100) / 100;
             res.status(200).send('Updated the content of the cart');            
             break;
@@ -40,9 +38,17 @@ router.post('/additem', function (req, res) {
     }
 });
 
-// Get cart details
+// Get cart item details
 router.get('/', function (req, res) {
     res.status(200).send(globals.shoppingCart);
+});
+
+// Removing a certain item from the cart
+router.delete('/removeItem/:id', function (req, res) {
+    var id = req.params.id;
+    console.log('Deleting item => ' + id);
+    delete globals.shoppingCart[id];
+    res.status(200).send('Removed item from the cart');
 });
 
 

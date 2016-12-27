@@ -43,6 +43,15 @@ router.get('/', function (req, res) {
     res.status(200).send(globals.shoppingCart);
 });
 
+// Get the total Amount of Cart
+router.get('/totalAmount', function (req, res) {
+    var totalOfCart = 0;
+    for(var itemInCart in globals.shoppingCart){
+        totalOfCart = totalOfCart + globals.shoppingCart[itemInCart].totalAmount;
+    }  
+    res.status(200).send(Math.round((totalOfCart) * 100) / 100 + '');
+});
+
 // Removing a certain item from the cart
 router.delete('/removeItem/:id', function (req, res) {
     var id = req.params.id;

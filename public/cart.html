@@ -50,7 +50,9 @@
                             </td>
                         </th>
                     </tr>
+                <script> var total = 0;</script>
                     <tr ng-repeat="itemInList in cartItems" style="background-color: #FFFF33;">
+                        
                         <th>
                             <td>
                                 {{itemInList.pid}}
@@ -78,7 +80,7 @@
                                 Total Bill
                             </td>                           
                             <td>
-                                {{totalCartBill}}
+                                <b>${{totalCartAmount}}</b>
                             </td>
                             <td> 
                                 <button class="btn btn-block btn-success" ng-click="checkout()">Checkout</button>

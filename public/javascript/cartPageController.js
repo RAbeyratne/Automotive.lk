@@ -10,11 +10,14 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
         if (statusCode == 200){
             console.log("Received cart items from server ~~~");
             console.log(JSON.stringify(response));
-            $scope.cartItems = response;
+            $scope.cartItems = response;   
             
-            for(var itemInCart in response){
-                console.log(JSON.stringify(itemInCart));
-            }      
+             $http.get('/cart/totalAmount').success(function (response, statusCode) {        
+                if (statusCode == 200){
+                    console.log(response);
+                    $scope.totalCartAmount = response;
+                }
+             });
         }      
     }).error(function (response, statusCode) {  
         console.log(statusCode + ' : ' + response);       

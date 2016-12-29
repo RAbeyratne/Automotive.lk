@@ -35,14 +35,36 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
                 console.log('Item removal failed');
                 alert('Item removal failed');
                 location.reload();
-            }
-            
+            }            
         });
         
     };
     
     $scope.checkout = function () { 
         console.log('Checkout ');        
+        
+    $http.get('/users/sessionDataAvailability').success(function (response, statusCode) {        
+        if (statusCode == 200){
+            console.log("Session data available");
+            window.location = '/checkout.html';
+        }            
+    }).error(function (response, statusCode) {  
+        if (statusCode == 409){
+            console.log("Session data NOT available"); 
+            $scope.notificationText = 'Please login to checkout from the cart!!!';         
+            function redirectToPage() {
+                    setTimeout(function(){
+                        window.location = "/signIn.html"; 
+                    }, 2200);
+                }
+            redirectToPage();   
+        } else {
+            console.log(statusCode + ' : ' + response);
+            $scope.notificationText = 'Server error!!! Please try again later!!!';      
+        }     
+    });
+        
+
     };
         
     

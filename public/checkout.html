@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="javascript/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <link rel="stylesheet" href="stylesheets/signInCSS.css">
+    <link rel="stylesheet" href="stylesheets/commonPageCSS.css">
+    <script>
+        $(function(){
+            $("#includedMenu").load("menuBar.html");
+        });
+        $(function(){
+            $("#footer").load("footer.html");
+        });
+    </script>
+    <script src="javascript/checkoutController.js"></script>
+</head>
+<body ng-app="checkout">
+<p style="margin : 0; padding : 0; text-align: right;font-weight: bold;"><a href="/signIn.html">Sign In</a> | <a href="/signOut.html">Sign Out</a> |<a href="/signUp.html">Sign Up</a></p>
+<h1 id="title">Checkout</h1> <br>
+
+<!--Top Menu-->
+<div id="includedMenu"></div>  <br>
+
+<div>
+    <div class="container"  style="background-color: #112233; margin: 0%; width: auto; padding: 0%">
+        <table class="table table-responsive">
+            <tbody>
+            <tr>
+                <td>
+                    <!--Sign in form-->
+                    <div class="container" id="login"  ng-controller="AppCtrl">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-wrap" >
+                                    <hr>
+                                    <h1>ITEM DETAILS</h1>
+                                    <form role="form" id="login-form" autocomplete="off"  ng-submit="proceed()">
+                                        <div class="form-group">
+                                            <label for="email" ng-model="checkoutData.email" class="sr-only">User Email</label>
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="xxx"  ng-model="email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="key" ng-model="checkoutData.name" class="sr-only">User Name</label>
+                                            <input type="password" name="key" id="key" class="form-control" placeholder="xxx" ng-model="password" required>
+                                        </div>                                       
+                                        <div class="form-group">
+                                            <label for="key" ng-model="checkoutData.date" class="sr-only">Date</label>
+                                            <input type="password" name="key" id="key" class="form-control" placeholder="xxx" ng-model="password" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="total" ng-model="checkoutData.total" class="sr-only">Total</label>
+                                            <input type="email" name="total" id="total" class="form-control" placeholder="xxx"  ng-model="total" required>
+                                        </div>                                       
+                                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Proceed">
+                                    </form>
+                                    <p style="color:red;" ng-bind="notificationText"></p>
+                                    <a href="/cart.html">Move back to cart</a>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End sign in -->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+
+<!--Footer-->
+<br><div id="footer"></div>
+</body>
+</html>

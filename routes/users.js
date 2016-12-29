@@ -84,5 +84,13 @@ router.post('/userRegistration', function (req, res) {
     });
 });
 
+// Check if the session data is available for cart checkout
+router.get('/sessionDataAvailability', function (req, res) {
+    if (globals.sessionData == ''){
+        res.status(409).send('Session data not available');
+    }
+    res.status(200).send('Session data available');    
+});
+
 console.log('User Router Active');
 module.exports = router;

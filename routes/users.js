@@ -87,10 +87,19 @@ router.post('/userRegistration', function (req, res) {
 // Check if the session data is available for cart checkout
 router.get('/sessionDataAvailability', function (req, res) {
     if (globals.sessionData == ''){
-        res.status(409).send('Session data not available');
+        res.status(409).send('Cart data not available');
     }
-    res.status(200).send('Session data available');    
+    res.status(200).send('Cart data available');    
 });
+
+// Check if the session data is available for cart checkout
+router.get('/', function (req, res) {
+    if (globals.sessionData == ''){
+        res.status(404).send('Session data not found');
+    }
+    res.status(200).send((globals.sessionData));    
+});
+
 
 console.log('User Router Active');
 module.exports = router;

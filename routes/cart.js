@@ -61,5 +61,13 @@ router.delete('/removeItem/:id', function (req, res) {
 });
 
 
+// Check if the cart data is available for checkout
+router.get('/cartDataAvailability', function (req, res) {
+    if (globals.shoppingCart == ''){
+        res.status(409).send('Session data not available');
+    }
+    res.status(200).send('Session data available');    
+});
+
 console.log('Cart Router Active');
 module.exports = router;

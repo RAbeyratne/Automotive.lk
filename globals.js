@@ -1,7 +1,14 @@
 // Automotive.lk Application
 
 var Globals = {
-    'sessionData' : '',
+    'sessionData' : {
+                "_id": "5864e308a20d162b30414597",
+                "fName": "Test Person",
+                "dateOfBirth": "2016-12-20T18:30:00.000Z",
+                "email": "test@mail.com",
+                "password": "123",
+                "__v": 0
+            },
     // Test Data
     'shoppingCart' : {
                       "1001": {

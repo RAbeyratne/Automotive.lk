@@ -88,8 +88,10 @@ router.post('/userRegistration', function (req, res) {
 router.get('/sessionDataAvailability', function (req, res) {
     if (globals.sessionData == ''){
         res.status(409).send('Cart data not available');
+    } else {
+        res.status(200).send('Cart data available');   
     }
-    res.status(200).send('Cart data available');    
+ 
 });
 
 // Check if the session data is available for cart checkout

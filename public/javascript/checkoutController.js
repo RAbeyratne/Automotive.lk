@@ -18,6 +18,24 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
                     
                     // Setting the data in the view
                     console.log(response);
+                    
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth()+1; //January is 0!
+
+                    var yyyy = today.getFullYear();
+                    if(dd<10){
+                        dd='0'+dd;
+                    } 
+                    if(mm<10){
+                        mm='0'+mm;
+                    } 
+                    var dateToday = dd+'/'+mm+'/'+yyyy;
+                    
+                    $scope.date = dateToday;
+                    $scope.checkoutData = response;
+                    
+                    console.log(dateToday);
                 }            
             }).error(function (response, statusCode) {  
                 if (statusCode == 409){
@@ -51,4 +69,18 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
             }     
         });
  
+    
+    $scope.proceed = function () { 
+        console.log('Test');
+        $http.post('order/', $scope.checkoutData).success(function(response, statusCode) {
+            if (statusCode == 200){        
+                $scope.notificationText = 'OK';  
+            }
+            console.log(statusCode + ' : ' + response);
+        }).error(function(response, statusCode) {    
+            console.log(statusCode + ' : ' + response);
+        });
+        console.log('Done');
+    }   
+    
 }]);

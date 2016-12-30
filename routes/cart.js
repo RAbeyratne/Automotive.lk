@@ -65,8 +65,20 @@ router.delete('/removeItem/:id', function (req, res) {
 router.get('/cartDataAvailability', function (req, res) {
     if (globals.shoppingCart == ''){
         res.status(409).send('Session data not available');
+    } else {
+        var totalOfCart = 0;
+        for(var itemInCart in globals.shoppingCart){
+            totalOfCart = totalOfCart + globals.shoppingCart[itemInCart].totalAmount;
+        }  
+        
+        var dataForCheckout = {
+        'email' : globals.sessionData.email,
+        'name' : globals.sessionData.fName,
+        'total' : Math.round((totalOfCart) * 100) / 100
     }
-    res.status(200).send('Session data available');    
+    res.status(200).send(dataForCheckout);    
+    }
+   
 });
 
 console.log('Cart Router Active');

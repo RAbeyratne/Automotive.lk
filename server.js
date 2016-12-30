@@ -11,11 +11,13 @@ app.use(bodyParser.json());
 var product = require('./routes/product');
 var users = require('./routes/users');
 var cart = require('./routes/cart');
+var order = require('./routes/order');
 
 // Routing
 app.use('/product', product);   
 app.use('/users', users); 
 app.use('/cart', cart); 
+app.use('/order', order); 
 
 
 // Test Mongose connection..

@@ -37,15 +37,15 @@
                                         <td>
                                             <center><b>SEARCH BAR</b></center>
                                         </td>
-                                    </tr>
-                                    <tr>
+                                    </tr>                                   
+                                    <tr>                                    
                                         <td>
-                                            Key words
+                                            Title
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" style="width:100%" >
+                                            <input type="text" ng-model="keyWords.productName" style="width:100%" >
                                         </td>
                                     </tr>
                                     <tr>
@@ -55,7 +55,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" style="width:100%" >
+                                            <input type="text" ng-model="keyWords.category" style="width:100%" >
                                         </td>
                                     </tr>
                                     <tr>
@@ -68,11 +68,6 @@
                                             <input type="text" style="width:100%" >
                                             <br><center>to</center>
                                             <input type="text" style="width:100%" >
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <button class="btn btn-primary" style="width: 100%">SEARCH</button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -90,7 +85,7 @@
 
                                 <!--Template required-->
                                 <div id="products" class="row list-group" >
-                                    <div class="item  col-xs-4 col-lg-4" ng-repeat="product in productList">
+                                    <div class="item  col-xs-4 col-lg-4" ng-repeat="product in productList | filter:keyWords:strict">
                                         <div class="thumbnail">
                                             <img class="group list-group-image" src="images/productDemoImage.png" alt="demoVehiclePartImage" />
                                             <div class="caption">

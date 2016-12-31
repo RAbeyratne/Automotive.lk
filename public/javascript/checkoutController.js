@@ -32,8 +32,8 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
                     } 
                     var dateToday = dd+'/'+mm+'/'+yyyy;
                     
-                    $scope.date = dateToday;
                     $scope.checkoutData = response;
+                    $scope.checkoutData.date = dateToday;
                     
                     console.log(dateToday);
                 }            
@@ -74,7 +74,14 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
         console.log('Test');
         $http.post('order/', $scope.checkoutData).success(function(response, statusCode) {
             if (statusCode == 200){        
-                $scope.notificationText = 'OK';  
+                $scope.notificationText = 'Succesfully added the order details. You will be automatically redirected to the homepage.';
+                $scope.checkoutData ='';
+                function redirectToPage() {
+                    setTimeout(function(){
+                        window.location = "/index.html"; 
+                    }, 2200);
+                }
+                redirectToPage();   
             }
             console.log(statusCode + ' : ' + response);
         }).error(function(response, statusCode) {    

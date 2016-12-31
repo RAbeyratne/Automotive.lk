@@ -19,7 +19,7 @@ var orderSchema = new Schema({
         require: true,
         unique: false        
     },
-    amount : {
+    total : {
         type: Number,
         require: true,
         unique: false        

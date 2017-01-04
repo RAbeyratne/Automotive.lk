@@ -27,29 +27,63 @@
 
         <div>
             <div class="container"  style="background-color: #112233; margin: 0%; width: auto; padding: 0%" ng-controller="AppCtrl">
+                
+                <h2 style="color: yellow; padding-left: 10px">Product Information </h2>
+                
                 <table class="table table-responsive" style="background-color: #00B7FF;">
                     <thead>
                         <tr>
                             <td><input class="form-control" ng-model="part.part_name"></td>
                             <td><input class="form-control" ng-model="part.unit_price" ></td>
                             <td><input class="form-control" ng-model="part.units_available"></td>
+                            <td><input class="form-control" ng-model="part.unit_price" ></td>
+                            <td><input class="form-control" ng-model="part.units_available"></td>
                             <td><button class="btn btn-primary" ng-click="addPart()">Insert</button></td>
                             <td><button class="btn btn-info" ng-click="updatePartDetails()">Update</button>
                         </tr>
                         <tr>
-                            <th>Part Name</th>
-                            <th>Unit Price ($)</th>
-                            <th>Units Available</th>
+                            <th>P_ID</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Unit_Price</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="selectedPart in partList">
-                            <td><b><i>{{selectedPart.part_name}}</i></b></td>
-                            <td>{{selectedPart.unit_price}}</td>
-                            <td>{{selectedPart.units_available}}</td>
-                            <td><button class="btn btn-danger" ng-click="deletePart(selectedPart)">Delete</button></td>
-                            <td><button class="btn btn-warning" ng-click="selectPartForModyfication(selectedPart)">Modify</button></td>
+                        <tr ng-repeat="selectedProduct in productList">
+                            <td><b><i>{{selectedProduct.pid}}</i></b></td>
+                            <td>{{selectedProduct.productName}}</td>
+                            <td>{{selectedProduct.category}}</td>
+                            <td>{{selectedProduct.description}}</td>
+                            <td>${{selectedProduct.price}}</td>
+                            <td><button class="btn btn-danger" ng-click="deletePart(selectedProduct)">Delete</button></td>
+                            <td><button class="btn btn-warning" ng-click="selectProductForModyfication(selectedProduct)">Modify</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                
+                <h2 style="color: yellow; padding-left: 10px">Order Information</h2>
+                
+                <table class="table table-responsive" style="background-color: #00B7FF;">
+                    <thead>
+                        <col width="20%">
+                        <tr>
+                            <th>O_ID</th>
+                            <th>Email</th>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Total</th>     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="selectedOrder in orderList">
+                            <td><small><i>{{selectedOrder._id}}</i></small></td>
+                            <td>{{selectedOrder.email}}</td>
+                            <td>{{selectedOrder.name}}</td>
+                            <td>{{selectedOrder.date}}</td>
+                            <td>${{selectedOrder.total}}</td>        
                         </tr>
                     </tbody>
                 </table>

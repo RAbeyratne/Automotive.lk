@@ -40,6 +40,18 @@ router.post('/', function (req, res) {
     });     
 });
 
+// Get all order data
+router.get('/', function (req, res) {
+  console.log('GET request recieved for order data ~~~');
+        orderModel.find('' , function(error, data) {
+        if (error){
+            throw err;
+            res.status(500).send(error);  
+        }
+            console.log(data);
+            res.status(200).send(data);  
+        });              
+});
 
 console.log('Order Router Active');
 module.exports = router;

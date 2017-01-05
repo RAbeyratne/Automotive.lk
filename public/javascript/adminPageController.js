@@ -27,6 +27,18 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
         console.log(statusCode + ' : ' + response);       
     });
 
-    
-    
+            
+    $scope.addProduct = function (newItemDetails) { 
+        if (newItemDetails == ''){
+
+        } else {
+            if (newItemDetails.pid == ''){
+
+            } else {
+                console.log(newItemDetails);   
+            }    
+        }
+
+    };
+        
 }]);

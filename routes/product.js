@@ -63,5 +63,18 @@ router.post('/addProduct', function (req, res) {
     }); 
 });
 
+// Deleting a product from the catalogue
+router.delete('/deleteItem/:id', function (req, res) {
+    var id = req.params.id;
+
+    productModel.remove({pid: Number(id)}, function (err, doc) {
+        if (err){
+            console.error(err);
+            res.status(409).send(err);   
+        }
+      res.status(200).send('Product removed from catralogue succesfully.');
+    });
+})
+
 console.log('Product Router Active');
 module.exports = router;

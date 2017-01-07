@@ -59,7 +59,7 @@
                             <td>{{selectedProduct.category}}</td>
                             <td>{{selectedProduct.description}}</td>
                             <td>${{selectedProduct.price}}</td>
-                            <td><button class="btn btn-danger" ng-click="deletePart(selectedProduct)">Delete</button></td>
+                            <td><button class="btn btn-danger" ng-click="deleteItem(selectedProduct.pid)">Delete</button></td>
                             <td><button class="btn btn-warning" ng-click="selectProductForModyfication(selectedProduct)">Modify</button></td>
                         </tr>
                     </tbody>

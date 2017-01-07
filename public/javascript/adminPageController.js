@@ -71,5 +71,21 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
         }
 
     };
+    
+    // Requesting to delete a product from the catalogue
+    $scope.deleteItem = function (selectedItemId) { 
+        console.log(selectedItemId);
+        
+        $http.delete('/product/deleteItem/' + selectedItemId).success(function(response, statusCode) {
+            
+            if (statusCode == 200){
+                alert('Product deleted from the catalogue.');
+                window.location = "/admin.html";
+            }  else {
+                alert('An error occured. Please try again later.' + JSON.stringify(response));   
+            }
+            console.log(statusCode + ' : ' + response);  
+        });
+    };
         
 }]);

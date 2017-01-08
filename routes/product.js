@@ -72,9 +72,21 @@ router.delete('/deleteItem/:id', function (req, res) {
             console.error(err);
             res.status(409).send(err);   
         }
-      res.status(200).send('Product removed from catralogue succesfully.');
+      res.status(200).send('Product removed from catalogue succesfully.');
     });
 })
+
+// Modifying a product in the catalogue
+router.put('/modifyProduct', function (req, res) {    
+    var product = req.body;
+
+    productModel.findOneAndUpdate({'pid': product.pid}, product, {upsert:true}, function(err, doc){
+        if (err) {
+            res.status(500).send(err);
+        }
+        res.status(200).send('Product modified in the catalogue succesfully.');                
+    });
+});
 
 console.log('Product Router Active');
 module.exports = router;

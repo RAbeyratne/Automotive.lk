@@ -86,6 +86,34 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
             }
             console.log(statusCode + ' : ' + response);  
         });
-    };
-        
+    };     
+    
+    // Selecting an item for modification
+    $scope.selectProduct = function (selectedItem) { 
+        console.log(selectedItem);
+       
+        $scope.newProduct = selectedItem;
+        $scope.readOnlyBoolean = true;
+    };  
+    $scope.readOnlyBoolean = false;
+    
+    // Requesting for updating the product details
+    $scope.modify = function(selectedItem){
+         // Checking if there is all the required data in the new product object
+         if ((selectedItem.pid == undefined)||(selectedItem.productName == undefined)||(selectedItem.category == undefined)||(selectedItem.description == undefined)||(selectedItem.price == undefined)){
+            console.log('Missing fields of the product.');
+        } else {
+             // Modifiy request of the product
+             $http.put('product/modifyProduct', selectedItem).success(function(response, statusCode) {               
+                 if (statusCode == 200){       
+                     alert(response);
+                     window.location = "/admin.html"; 
+                 }
+                 console.log(statusCode + ' : ' + response);
+             }).error(function(response, statusCode) {
+                 alert(response);
+                 console.log(statusCode + ' : ' + response);
+             });
+        }
+    }
 }]);

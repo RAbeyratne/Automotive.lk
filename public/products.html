@@ -65,14 +65,14 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" style="width:100%" >
+                                            <input type="text"  ng-model="minFilter" ng-change="updatePriceMinFilter()" style="width:100%" >
                                             <br><center>to</center>
-                                            <input type="text" style="width:100%" >
+                                            <input type="text"  ng-model="maxFilter" ng-change="updatePriceMaxFilter()" style="width:100%" >
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <button class="btn btn-danger" style="width: 100%">CLEAR</button>
+                                            <button class="btn btn-danger" style="width: 100%" ng-click="clearSearchFields()">CLEAR</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -85,7 +85,7 @@
 
                                 <!--Template required-->
                                 <div id="products" class="row list-group" >
-                                    <div class="item  col-xs-4 col-lg-4" ng-repeat="product in productList | filter:keyWords:strict">
+                                    <div class="item  col-xs-4 col-lg-4" ng-repeat="product in productList | filter:keyWords:strict | priceFilter">
                                         <div class="thumbnail">
                                             <img class="group list-group-image" src="images/productDemoImage.png" alt="demoVehiclePartImage" />
                                             <div class="caption">

@@ -1,5 +1,15 @@
-THIS PROJECT WAS DONE USING MONGO, EXPRESS, ANGULAR 1,
-NODE JS AND BOOTSTRAP. THE GOAL WAS TO MIMIC THE FUNCTIONALITY
-OF A COMMERCIAL STORE FRONT, BOTH BACK-END AND FRONT-END.
+Automotive.lk
+============
 
-ENJOY!!! :)
+***  project was done using NodeJS 4.4.7, Angular 1.5.8 ,Express and AngularJS. 
+
+The goal of this project was to mimic the functionality of a commercial store front. This includes the front-end, back-end and everything in between. 
+
+*** Steps to run the project
+
++ clone the repositary
++ cd Automotive.lk
++ npm install
++ node server.js
+
+Enjoy!!! :)
